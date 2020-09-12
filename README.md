@@ -10,3 +10,7 @@ http://127.0.0.1:8081/index.php
 
 
 docker-compose exec workspace bash
+
+Показать все обьявления: 
+
+php artisan ads-show-all

@@ -18,25 +18,27 @@
 
         public function getAll(Request $request)
         {
-            if(isset($_GET['orderby']) && ($_GET['orderby']=="price" ||$_GET['orderby']=="created_at" )){
-                $orderBy=$_GET['orderby'];
-            }else{
-                $orderBy='created_at';
+            if (isset($_GET['orderby']) && ($_GET['orderby'] == "price" || $_GET['orderby'] == "created_at")) {
+                $orderBy = $_GET['orderby'];
+            } else {
+                $orderBy = 'created_at';
             }
 
-            if (isset($_GET['order']) && ($_GET['order']=="desc" ||$_GET['order']=="asc" )) {
+            if (isset($_GET['order']) && ($_GET['order'] == "desc" || $_GET['order'] == "asc")) {
                 $order = $_GET['order'];
             } else {
-                $order="desc";
+                $order = "desc";
             }
             //desc
-            $ads = Ads::select(['*'])->orderBy($orderBy,$order)->paginate('10');
+            $ads = Ads::select(['*'])->orderBy($orderBy, $order)->paginate('10');
             return response()->json($ads, 200);
         }
 
         public function getOne($id)
         {
-            return new AdsResourse(Ads::select('*')->where(['id' => $id])->first());
+
+            $ads = Ads::find(intval($id));
+            return new AdsResourse($ads);
         }
 
 

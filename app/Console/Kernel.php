@@ -14,7 +14,8 @@ class Kernel extends ConsoleKernel
      */
     protected $commands = [
         //
-            Commands\ShowAllAds::class
+            Commands\ShowAllAds::class,
+            Commands\ShowOneAds::class
     ];
 
     /**

@@ -40,13 +40,13 @@
         {
             $ads = Ads::select(['*'])->orderBy('created_at', 'desc')->get();
             foreach ($ads as $item) {
+                $this->line("images: ");
                 $this->info("id: " . $item->id);
                 $this->line("title " . $item->title);
                 $this->line("description: " . $item->description);
                 $this->question('------------------------------------');
                 $images = $item->images()->get();
                 if (!empty($images)) {
-                    $this->line("images: ");
                     $counter=0;
                     foreach ($images as $image) {
                         $counter++;
