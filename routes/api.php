@@ -22,6 +22,6 @@
 
     Route::group(['prefix' => 'ads'], function () {
         Route::get('/', [AdsController::class, 'getall']);
-        Route::get('/{id}', [AdsController::class, 'view']);
+        Route::get('/{id}', [AdsController::class, 'getOne']);
         Route::post('/', [AdsController::class, 'store']);
     });
