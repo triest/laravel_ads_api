@@ -3,7 +3,9 @@
     namespace App\Http\Controllers;
 
 
+    use App\Builders\AdsBuilder;
     use App\Http\Requests\CreateAdsRequest;
+    use App\Http\Resources\AdsItemResourse;
     use App\Http\Resources\AdsResourse;
     use App\Jobs\DownloadImage;
     use App\Models\Ads;
@@ -30,15 +32,17 @@
                 $order = "desc";
             }
             //desc
-            $ads = Ads::select(['*'])->orderBy($orderBy, $order)->paginate('10');
-            return response()->json($ads, 200);
+            $ads = Ads::select(['*'])->orderBy($orderBy, $order)->paginate('5');
+            return AdsResourse::collection($ads);
+            //  return response()->json(collect($ads), 200);
         }
 
         public function getOne($id)
         {
 
-            $ads = Ads::find(intval($id));
-            return new AdsResourse($ads);
+            $ads = Ads::findOrFail(intval($id));
+
+            return new AdsItemResourse($ads);
         }
 
 
@@ -49,22 +53,17 @@
         public function store(CreateAdsRequest $request)
         {
 
-            $ads = new Ads();
-            $ads->title = $request->title;
-            $ads->description = $request->description;
-            $ads->price = $request->price;
-            $ads->save();
+            $adsBuilder = new AdsBuilder();
+            $adsBuilder->setTitle($request->title);
+            $adsBuilder->setDescription($request->description);
+            $adsBuilder->setPrice($request->price);
+            $adsBuilder->setTitle($request->title);
 
             if ($request->has('image')) {
-                foreach ($request->image as $key) {
-                    $image = new Image();
-                    $image->url = $key;
-                    $image->save();
-                    $ads->images()->save($image);
-                    DownloadImage::dispatchAfterResponse($image->id);
-                }
+                $adsBuilder->addImages($request->image);
             }
 
+            $ads = $adsBuilder->getResult();
 
             return response()->json(['id' => $ads->id], 201);
         }

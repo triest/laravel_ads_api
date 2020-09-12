@@ -43,7 +43,6 @@ class ShowOneAds extends Command
             $this->error("Id must be integer");
             return 0;
         }
-        $this->info("id: " . $id);
         $item=Ads::select('*')->where(['id' => $id])->first();
         if($item==null){
             $this->info("ads not found");

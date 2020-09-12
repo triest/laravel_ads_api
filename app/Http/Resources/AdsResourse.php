@@ -1,19 +1,29 @@
 <?php
 
-namespace App\Http\Resources;
+    namespace App\Http\Resources;
 
-use Illuminate\Http\Resources\Json\JsonResource;
+    use Illuminate\Http\Resources\Json\JsonResource;
 
-class AdsResourse extends JsonResource
-{
-    /**
-     * Transform the resource into an array.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return array
-     */
-    public function toArray($request)
+    class AdsResourse extends JsonResource
     {
-        return parent::toArray($request);
+
+        public function toArray($model)
+        {
+            $images = $this->images()->first();
+
+            $images_array=array();
+            if($images!=null && $images->downloaded==1){
+                $url=$images->name;
+                $images_array[]=$images;
+            }
+
+            return [
+                    'data' => [
+                            'id' => $this->id,
+                            'title' => $this->title,
+                            'description' => $this->description,
+                            'main_image' => $images_array
+                    ],
+            ];
+        }
     }
-}
