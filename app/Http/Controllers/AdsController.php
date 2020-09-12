@@ -5,6 +5,7 @@
 
     use App\Http\Requests\CreateAdsRequest;
     use App\Http\Resources\AdsResourse;
+    use App\Jobs\DownloadImage;
     use App\Models\Ads;
     use App\Models\Image;
     use Illuminate\Http\Request;
@@ -44,10 +45,10 @@
                 foreach ($request->image as $key) {
 
                     $image = new Image();
-                    $image->url=$key;
+                    $image->url = $key;
                     $image->save();
                     $ads->images()->save($image);
-
+                    DownloadImage::dispatchAfterResponse($image->id);
                 }
             }
 
