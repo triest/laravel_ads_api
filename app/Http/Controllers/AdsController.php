@@ -30,7 +30,6 @@
                 $order="desc";
             }
             //desc
-            //asc
             $ads = Ads::select(['*'])->orderBy($orderBy,$order)->paginate('10');
             return response()->json($ads, 200);
         }
