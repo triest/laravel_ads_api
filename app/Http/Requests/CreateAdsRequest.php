@@ -26,7 +26,9 @@ class CreateAdsRequest extends FormRequest
         return [
                 'title' => 'required|max:200',
                 'description' => 'required|max:1000',
-                'price'=>'required|numeric|min:0|digits_between:1,16'
+                'price'=>'required|numeric|min:0|digits_between:1,16',
+                'image'=>'required|array|min:1|max:3',
+                'image.*'=>'required|url'
         ];
     }
 }

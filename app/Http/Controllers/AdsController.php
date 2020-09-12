@@ -16,9 +16,22 @@
     {
 
 
-        public function getAll()
+        public function getAll(Request $request)
         {
-            $ads = Ads::paginate(10);
+            if(isset($_GET['orderby']) && ($_GET['orderby']=="price" ||$_GET['orderby']=="created_at" )){
+                $orderBy=$_GET['orderby'];
+            }else{
+                $orderBy='created_at';
+            }
+
+            if (isset($_GET['order']) && ($_GET['order']=="desc" ||$_GET['order']=="asc" )) {
+                $order = $_GET['order'];
+            } else {
+                $order="desc";
+            }
+            //desc
+            //asc
+            $ads = Ads::select(['*'])->orderBy($orderBy,$order)->paginate('10');
             return response()->json($ads, 200);
         }
 
@@ -43,7 +56,6 @@
 
             if ($request->has('image')) {
                 foreach ($request->image as $key) {
-
                     $image = new Image();
                     $image->url = $key;
                     $image->save();
