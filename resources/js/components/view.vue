@@ -10,10 +10,11 @@
 
                         Фотографии:
                         <div v-for="image in item.images">
-                            <p>
+                            <p v-if="image.name!=null">
                                 <img :src="'storage/'+image.name"/>
                             </p>
                         </div>
+                        <a href="/">Назад </a>
                     </div>
                 </div>
             </div>

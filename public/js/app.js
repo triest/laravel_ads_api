@@ -2032,6 +2032,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: {
     id: {
@@ -37699,18 +37700,18 @@ var render = function() {
           "div",
           { staticClass: "card" },
           [
-            _c("div", { staticClass: "card-header" }, [
-              _vm._v("Example Component")
-            ]),
-            _vm._v(" "),
             _vm._l(_vm.ads, function(item) {
               return _c("div", [
                 _c("b", [_vm._v(_vm._s(item.data.title))]),
                 _c("br"),
                 _vm._v(" "),
-                _c("img", {
-                  attrs: { src: "storage/" + item.data.main_image.name }
-                }),
+                item.data.main_image != null
+                  ? _c("div", [
+                      _c("img", {
+                        attrs: { src: "storage/" + item.data.main_image.name }
+                      })
+                    ])
+                  : _vm._e(),
                 _vm._v(" "),
                 _c("a", { attrs: { href: item.data.id } }, [
                   _vm._v(
@@ -37801,11 +37802,17 @@ var render = function() {
                   ),
                   _vm._l(_vm.item.images, function(image) {
                     return _c("div", [
-                      _c("p", [
-                        _c("img", { attrs: { src: "storage/" + image.name } })
-                      ])
+                      image.name != null
+                        ? _c("p", [
+                            _c("img", {
+                              attrs: { src: "storage/" + image.name }
+                            })
+                          ])
+                        : _vm._e()
                     ])
-                  })
+                  }),
+                  _vm._v(" "),
+                  _c("a", { attrs: { href: "/" } }, [_vm._v("Назад ")])
                 ],
                 2
               )

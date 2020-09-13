@@ -18,7 +18,10 @@
     {
 
 
-        public function getAll(Request $request)
+        /**
+         * @return \Illuminate\Http\Resources\Json\AnonymousResourceCollection
+         */
+        public function getAll()
         {
             if (isset($_GET['orderby']) && ($_GET['orderby'] == "price" || $_GET['orderby'] == "created_at")) {
                 $orderBy = $_GET['orderby'];
@@ -34,13 +37,19 @@
             //desc
             $ads = Ads::select(['*'])->orderBy($orderBy, $order)->paginate('5');
             return AdsResourse::collection($ads);
-            //  return response()->json(collect($ads), 200);
         }
 
+        /**
+         * @param $id
+         * @return AdsItemResourse|\Illuminate\Contracts\Routing\ResponseFactory|\Illuminate\Http\Response
+         */
         public function getOne($id)
         {
 
-            $ads = Ads::findOrFail(intval($id));
+            $ads = Ads::find(intval($id));
+            if($ads==null){
+                return response('',404);
+            }
 
             return new AdsItemResourse($ads);
         }

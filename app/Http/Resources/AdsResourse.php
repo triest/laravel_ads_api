@@ -9,12 +9,17 @@
 
         public function toArray($model)
         {
-            $images = $this->images()->first();
+            $images = $this->images()->get();
 
-            $images_array=array();
-            if($images!=null && $images->downloaded==1){
-                $url=$images->name;
-                $images_array[]=$images;
+            $url = Array();
+            foreach ($images as $image) {
+                if ($image != null && $image->downloaded == 1) {
+                    $url[] = $image;
+                }
+            }
+
+            if(empty($url)){
+                array_push($url,null);
             }
 
             return [
@@ -22,7 +27,8 @@
                             'id' => $this->id,
                             'title' => $this->title,
                             'description' => $this->description,
-                            'main_image' => $images_array
+                            'main_image' => $url[0],
+                            'price' => $this->price
                     ],
             ];
         }

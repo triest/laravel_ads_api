@@ -1,6 +1,6 @@
 @extends('layouts.welcome')
 
 @section('content')
-ds
+ Обьявления
  <ads-list></ads-list>
 @endsection
