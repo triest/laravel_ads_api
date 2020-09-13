@@ -8,7 +8,7 @@
                         {{item.title}}
                     </h2>
                     <p v-if="item.main_image!=null">
-                        <img :src="'storage/'+item.main_image.name"/>
+                        <img :src="item.main_image"/>
                     </p>
                     <p class="card-text">
                         {{item.description}}

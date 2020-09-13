@@ -37706,7 +37706,7 @@ var render = function() {
               ? _c("div", [
                   _c("img", {
                     staticClass: "card-img-top",
-                    attrs: { src: "storage/" + item.data.main_image }
+                    attrs: { src: item.data.main_image }
                   })
                 ])
               : _vm._e(),
@@ -37780,9 +37780,7 @@ var render = function() {
                 _vm._v(" "),
                 _vm.item.main_image != null
                   ? _c("p", [
-                      _c("img", {
-                        attrs: { src: "storage/" + _vm.item.main_image.name }
-                      })
+                      _c("img", { attrs: { src: _vm.item.main_image } })
                     ])
                   : _vm._e(),
                 _vm._v(" "),

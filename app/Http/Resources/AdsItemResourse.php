@@ -21,6 +21,9 @@
 
             if(empty($url)){
                 array_push($url,null);
+                $main_image=null;
+            }else{
+                $main_image=$url[0]->name;
             }
 
             return [
@@ -28,7 +31,7 @@
                             'id' => $this->id,
                             'title' => $this->title,
                             'description' => $this->description,
-                            'main_image' => $url[0],
+                            'main_image' =>'storage/'.$main_image,
                             'images' => $url,
                             'price' => $this->price
                     ],

@@ -20,7 +20,7 @@
                     'data' => [
                             'id' => $this->id,
                             'title' => $this->title,
-                            'main_image' => $link,
+                            'main_image' => 'storage/'.$link,
                             'price' => $this->price,
                     ],
             ];
