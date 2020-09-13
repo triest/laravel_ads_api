@@ -41,12 +41,13 @@
             }
             try {
                 $contents = file_get_contents($image->url);
-            }catch (IOException $exception){
+            } catch (IOException $exception) {
                 return;
             }
-            $name=uniqid().".png";
+            $name = uniqid() . ".png";
             $image->name = $name;
-            Storage::put($name, $contents);
+            $patch = "public/" . $name;
+            Storage::put($patch, $contents);
             $image->downloaded = 1;
             $image->save();
 

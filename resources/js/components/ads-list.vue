@@ -5,7 +5,7 @@
             <div v-for="item in ads">
                 <div class="card mb-4">
                     <div v-if="item.data.main_image!=null">
-                        <img class="card-img-top" :src="'storage/'+item.data.main_image.name"/>
+                        <img class="card-img-top" :src="'storage/'+item.data.main_image"/>
                     </div>
                     <div class="card-footer text-muted">
                         Цена:

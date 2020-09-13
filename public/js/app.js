@@ -37706,7 +37706,7 @@ var render = function() {
               ? _c("div", [
                   _c("img", {
                     staticClass: "card-img-top",
-                    attrs: { src: "storage/" + item.data.main_image.name }
+                    attrs: { src: "storage/" + item.data.main_image }
                   })
                 ])
               : _vm._e(),
@@ -37793,7 +37793,13 @@ var render = function() {
                       "\n                "
                   )
                 ]),
-                _vm._v("\n\n                Фотографии:\n                "),
+                _vm._v(
+                  "\n                Цена: " +
+                    _vm._s(_vm.item.price) +
+                    "\n                "
+                ),
+                _c("b", [_vm._v(" Фотографии:")]),
+                _vm._v(" "),
                 _vm._l(_vm.item.images, function(image) {
                   return _c("div", [
                     image.name != null

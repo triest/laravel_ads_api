@@ -13,8 +13,8 @@
                     <p class="card-text">
                         {{item.description}}
                     </p>
-
-                    Фотографии:
+                    Цена: {{item.price}}
+                    <b> Фотографии:</b>
                     <div v-for="image in item.images">
                         <p v-if="image.name!=null">
                             <img :src="'storage/'+image.name"/>
