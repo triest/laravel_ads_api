@@ -28,7 +28,7 @@
                             'title' => $this->title,
                             'description' => $this->description,
                             'main_image' => $url[0],
-                            'price' => $this->price
+                            'price' => $this->price,
                     ],
             ];
         }

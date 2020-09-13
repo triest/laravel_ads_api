@@ -1964,10 +1964,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
 /* harmony default export */ __webpack_exports__["default"] = ({
   mounted: function mounted() {
     console.log('Component mounted.');
@@ -2008,6 +2004,12 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -37694,69 +37696,48 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("div", { staticClass: "container" }, [
-    _c("div", { staticClass: "row justify-content-center" }, [
-      _c("div", { staticClass: "col-md-8" }, [
-        _c(
-          "div",
-          { staticClass: "card" },
-          [
-            _vm._l(_vm.ads, function(item) {
-              return _c("div", [
-                _c("b", [_vm._v(_vm._s(item.data.title))]),
-                _c("br"),
-                _vm._v(" "),
-                item.data.main_image != null
-                  ? _c("div", [
-                      _c("img", {
-                        attrs: { src: "storage/" + item.data.main_image.name }
-                      })
-                    ])
-                  : _vm._e(),
-                _vm._v(" "),
-                _c("a", { attrs: { href: item.data.id } }, [
-                  _vm._v(
-                    "\n                        Подробнее\n                    "
-                  )
-                ])
-              ])
-            }),
-            _vm._v(" "),
-            _vm.prev_page_url != null
+    _c(
+      "div",
+      { staticClass: "card" },
+      _vm._l(_vm.ads, function(item) {
+        return _c("div", [
+          _c("div", { staticClass: "card mb-4" }, [
+            item.data.main_image != null
               ? _c("div", [
-                  _c(
-                    "button",
-                    {
-                      on: {
-                        click: function($event) {
-                          return _vm.getAll(_vm.prev_page_url)
-                        }
-                      }
-                    },
-                    [_vm._v("Назад")]
-                  )
+                  _c("img", {
+                    staticClass: "card-img-top",
+                    attrs: { src: "storage/" + item.data.main_image.name }
+                  })
                 ])
               : _vm._e(),
             _vm._v(" "),
-            _vm.next_page_url != null
-              ? _c("div", [
-                  _c(
-                    "button",
-                    {
-                      on: {
-                        click: function($event) {
-                          return _vm.getAll(_vm.next_page_url)
-                        }
-                      }
-                    },
-                    [_vm._v("Вперед")]
-                  )
-                ])
-              : _vm._e()
-          ],
-          2
-        )
-      ])
-    ])
+            _c("div", { staticClass: "card-footer text-muted" }, [
+              _vm._v(
+                "\n                    Цена:\n                    " +
+                  _vm._s(item.data.price) +
+                  "\n                "
+              )
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "card-body" }, [
+              _c("h2", { staticClass: "card-title" }, [
+                _vm._v(_vm._s(item.data.title))
+              ]),
+              _vm._v(" "),
+              _c(
+                "a",
+                {
+                  staticClass: "btn btn-primary",
+                  attrs: { href: item.data.id }
+                },
+                [_vm._v("Подробней→")]
+              )
+            ])
+          ])
+        ])
+      }),
+      0
+    )
   ])
 }
 var staticRenderFns = []
@@ -37782,47 +37763,68 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("div", { staticClass: "container" }, [
-    _c("div", { staticClass: "row justify-content-center" }, [
-      _c("div", { staticClass: "col-md-8" }, [
-        _c("div", { staticClass: "card" }, [
-          _vm.item != null
-            ? _c(
-                "div",
-                [
-                  _c("b", [_vm._v(_vm._s(_vm.item.title))]),
-                  _c("br"),
-                  _vm._v(" "),
-                  _c("img", {
-                    attrs: { src: "storage/" + _vm.item.main_image.name }
-                  }),
+    _c("div", { staticClass: "card" }, [
+      _vm.item != null
+        ? _c("div", [
+            _c(
+              "div",
+              { staticClass: "card-body" },
+              [
+                _c("h2", { staticClass: "card-title" }, [
+                  _vm._v(
+                    "\n                    " +
+                      _vm._s(_vm.item.title) +
+                      "\n                "
+                  )
+                ]),
+                _vm._v(" "),
+                _vm.item.main_image != null
+                  ? _c("p", [
+                      _c("img", {
+                        attrs: { src: "storage/" + _vm.item.main_image.name }
+                      })
+                    ])
+                  : _vm._e(),
+                _vm._v(" "),
+                _c("p", { staticClass: "card-text" }, [
                   _vm._v(
                     "\n                    " +
                       _vm._s(_vm.item.description) +
-                      "\n\n                    Фотографии:\n                    "
-                  ),
-                  _vm._l(_vm.item.images, function(image) {
-                    return _c("div", [
-                      image.name != null
-                        ? _c("p", [
-                            _c("img", {
-                              attrs: { src: "storage/" + image.name }
-                            })
-                          ])
-                        : _vm._e()
-                    ])
-                  }),
-                  _vm._v(" "),
-                  _c("a", { attrs: { href: "/" } }, [_vm._v("Назад ")])
-                ],
-                2
-              )
-            : _vm._e()
-        ])
-      ])
+                      "\n                "
+                  )
+                ]),
+                _vm._v("\n\n                Фотографии:\n                "),
+                _vm._l(_vm.item.images, function(image) {
+                  return _c("div", [
+                    image.name != null
+                      ? _c("p", [
+                          _c("img", { attrs: { src: "storage/" + image.name } })
+                        ])
+                      : _vm._e()
+                  ])
+                }),
+                _vm._v(" "),
+                _vm._m(0)
+              ],
+              2
+            )
+          ])
+        : _vm._e()
     ])
   ])
 }
-var staticRenderFns = []
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("a", { attrs: { href: "/" } }, [
+      _c("button", { staticClass: "btn btn-info", attrs: { type: "button" } }, [
+        _vm._v("Назад")
+      ])
+    ])
+  }
+]
 render._withStripped = true
 
 

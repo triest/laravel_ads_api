@@ -1,26 +1,32 @@
 <template>
     <div class="container">
-        <div class="row justify-content-center">
-            <div class="col-md-8">
-                <div class="card">
-                    <div v-if="item!=null">
-                        <b>{{item.title}}</b><br>
-                        <img :src="'storage/'+item.main_image.name"/>
-                        {{item.description}}
 
-                        Фотографии:
-                        <div v-for="image in item.images">
-                            <p v-if="image.name!=null">
-                                <img :src="'storage/'+image.name"/>
-                            </p>
-                        </div>
-                        <a href="/">Назад </a>
+        <div class="card">
+            <div v-if="item!=null">
+                <div class="card-body">
+                    <h2 class="card-title">
+                        {{item.title}}
+                    </h2>
+                    <p v-if="item.main_image!=null">
+                        <img :src="'storage/'+item.main_image.name"/>
+                    </p>
+                    <p class="card-text">
+                        {{item.description}}
+                    </p>
+
+                    Фотографии:
+                    <div v-for="image in item.images">
+                        <p v-if="image.name!=null">
+                            <img :src="'storage/'+image.name"/>
+                        </p>
                     </div>
+                    <a href="/">
+                        <button type="button" class="btn btn-info">Назад</button>
+                    </a>
                 </div>
             </div>
         </div>
     </div>
-
 </template>
 
 <script>

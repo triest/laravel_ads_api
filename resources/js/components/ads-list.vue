@@ -1,28 +1,24 @@
 <template>
     <div class="container">
-        <div class="row justify-content-center">
-            <div class="col-md-8">
-                <div class="card">
-                    <div v-for="item in ads">
-                        <b>{{item.data.title}}</b><br>
-                        <div v-if="item.data.main_image!=null">
-                            <img :src="'storage/'+item.data.main_image.name"/>
-                        </div>
-                        <a :href="item.data.id">
-                            Подробнее
-                        </a>
+
+        <div class="card">
+            <div v-for="item in ads">
+                <div class="card mb-4">
+                    <div v-if="item.data.main_image!=null">
+                        <img class="card-img-top" :src="'storage/'+item.data.main_image.name"/>
                     </div>
-                    <div v-if="prev_page_url!=null">
-                        <button v-on:click="getAll(prev_page_url)">Назад</button>
+                    <div class="card-footer text-muted">
+                        Цена:
+                        {{item.data.price}}
                     </div>
-                    <div v-if="next_page_url!=null">
-                        <button v-on:click="getAll(next_page_url)">Вперед</button>
+                    <div class="card-body">
+                        <h2 class="card-title">{{item.data.title}}</h2>
+                        <a :href="item.data.id" class="btn btn-primary">Подробней&rarr;</a>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-
 </template>
 
 <script>
