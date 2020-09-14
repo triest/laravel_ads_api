@@ -1964,6 +1964,12 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   mounted: function mounted() {
     console.log('Component mounted.');
@@ -1986,8 +1992,6 @@ __webpack_require__.r(__webpack_exports__);
         _this.ads = data.data;
         _this.prev_page_url = data.links.prev;
         _this.next_page_url = data.links.next;
-        console.log(_this.prev_page_url);
-        console.log(_this.next_page_url);
       })["catch"]();
     }
   }
@@ -37699,44 +37703,78 @@ var render = function() {
     _c(
       "div",
       { staticClass: "card" },
-      _vm._l(_vm.ads, function(item) {
-        return _c("div", [
-          _c("div", { staticClass: "card mb-4" }, [
-            item.data.main_image != null
-              ? _c("div", [
-                  _c("img", {
-                    staticClass: "card-img-top",
-                    attrs: { src: item.data.main_image }
-                  })
-                ])
-              : _vm._e(),
-            _vm._v(" "),
-            _c("div", { staticClass: "card-footer text-muted" }, [
-              _vm._v(
-                "\n                    Цена:\n                    " +
-                  _vm._s(item.data.price) +
-                  "\n                "
-              )
-            ]),
-            _vm._v(" "),
-            _c("div", { staticClass: "card-body" }, [
-              _c("h2", { staticClass: "card-title" }, [
-                _vm._v(_vm._s(item.data.title))
+      [
+        _vm._l(_vm.ads, function(item) {
+          return _c("div", [
+            _c("div", { staticClass: "card mb-4" }, [
+              item.data.main_image != null
+                ? _c("div", [
+                    _c("img", {
+                      staticClass: "card-img-top",
+                      attrs: { src: item.data.main_image }
+                    })
+                  ])
+                : _vm._e(),
+              _vm._v(" "),
+              _c("div", { staticClass: "card-footer text-muted" }, [
+                _vm._v(
+                  "\n                    Цена:\n                    " +
+                    _vm._s(item.data.price) +
+                    "\n                "
+                )
               ]),
               _vm._v(" "),
-              _c(
-                "a",
-                {
-                  staticClass: "btn btn-primary",
-                  attrs: { href: item.data.id }
-                },
-                [_vm._v("Подробней→")]
-              )
+              _c("div", { staticClass: "card-body" }, [
+                _c("h2", { staticClass: "card-title" }, [
+                  _vm._v(_vm._s(item.data.title))
+                ]),
+                _vm._v(" "),
+                _c(
+                  "a",
+                  {
+                    staticClass: "btn btn-primary",
+                    attrs: { href: item.data.id }
+                  },
+                  [_vm._v("Подробней→")]
+                )
+              ])
             ])
           ])
-        ])
-      }),
-      0
+        }),
+        _vm._v(" "),
+        _vm.prev_page_url != null
+          ? _c("div", [
+              _c(
+                "button",
+                {
+                  on: {
+                    click: function($event) {
+                      return _vm.getAll(_vm.prev_page_url)
+                    }
+                  }
+                },
+                [_vm._v("Назад")]
+              )
+            ])
+          : _vm._e(),
+        _vm._v(" "),
+        _vm.next_page_url != null
+          ? _c("div", [
+              _c(
+                "button",
+                {
+                  on: {
+                    click: function($event) {
+                      return _vm.getAll(_vm.next_page_url)
+                    }
+                  }
+                },
+                [_vm._v("Вперед")]
+              )
+            ])
+          : _vm._e()
+      ],
+      2
     )
   ])
 }

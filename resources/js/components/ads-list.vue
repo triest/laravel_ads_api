@@ -17,6 +17,12 @@
                     </div>
                 </div>
             </div>
+            <div v-if="prev_page_url!=null">
+                <button v-on:click="getAll(prev_page_url)">Назад</button>
+            </div>
+            <div v-if="next_page_url!=null">
+                <button v-on:click="getAll(next_page_url)">Вперед</button>
+            </div>
         </div>
     </div>
 </template>
@@ -42,9 +48,6 @@
                         this.ads = data.data;
                         this.prev_page_url = data.links.prev;
                         this.next_page_url = data.links.next;
-                        console.log(this.prev_page_url)
-                        console.log(this.next_page_url)
-
                     }
                 ).catch();
             }
