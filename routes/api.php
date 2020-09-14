@@ -19,9 +19,4 @@
         return $request->user();
     });
 
-
-    Route::group(['prefix' => 'ads'], function () {
-        Route::get('/', [AdsController::class, 'index']);
-        Route::get('/{id}', [AdsController::class, 'view']);
-        Route::post('/', [AdsController::class, 'store']);
-    });
+    Route::resource('ads','AdsController')->only('index','show','store');

@@ -35,7 +35,7 @@
                 $order = "desc";
             }
             //desc
-            $ads = Ads::select(['*'])->orderBy($orderBy, $order)->paginate('5');
+            $ads = Ads::select(['*'])->orderBy($orderBy, $order)->paginate('10');
             return AdsResourse::collection($ads);
         }
 
@@ -43,7 +43,7 @@
          * @param $id
          * @return AdsItemResource|\Illuminate\Contracts\Routing\ResponseFactory|\Illuminate\Http\Response
          */
-        public function view($id)
+        public function show($id)
         {
 
             $ads = Ads::find(intval($id));
