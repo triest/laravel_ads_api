@@ -21,7 +21,7 @@
         /**
          * @return \Illuminate\Http\Resources\Json\AnonymousResourceCollection
          */
-        public function getAll()
+        public function index()
         {
             if (isset($_GET['orderby']) && ($_GET['orderby'] == "price" || $_GET['orderby'] == "created_at")) {
                 $orderBy = $_GET['orderby'];
@@ -43,7 +43,7 @@
          * @param $id
          * @return AdsItemResourse|\Illuminate\Contracts\Routing\ResponseFactory|\Illuminate\Http\Response
          */
-        public function getOne($id)
+        public function view($id)
         {
 
             $ads = Ads::find(intval($id));
