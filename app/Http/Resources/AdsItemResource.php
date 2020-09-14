@@ -5,7 +5,7 @@
     use Illuminate\Http\Resources\Json\JsonResource;
     use PhpParser\Node\Expr\Array_;
 
-    class AdsItemResourse extends JsonResource
+    class AdsItemResource extends JsonResource
     {
 
         public function toArray($model)

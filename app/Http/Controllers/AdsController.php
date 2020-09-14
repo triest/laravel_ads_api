@@ -5,7 +5,7 @@
 
     use App\Builders\AdsBuilder;
     use App\Http\Requests\CreateAdsRequest;
-    use App\Http\Resources\AdsItemResourse;
+    use App\Http\Resources\AdsItemResource;
     use App\Http\Resources\AdsResourse;
     use App\Jobs\DownloadImage;
     use App\Models\Ads;
@@ -41,7 +41,7 @@
 
         /**
          * @param $id
-         * @return AdsItemResourse|\Illuminate\Contracts\Routing\ResponseFactory|\Illuminate\Http\Response
+         * @return AdsItemResource|\Illuminate\Contracts\Routing\ResponseFactory|\Illuminate\Http\Response
          */
         public function view($id)
         {
@@ -51,7 +51,7 @@
                 return response('',404);
             }
 
-            return new AdsItemResourse($ads);
+            return new AdsItemResource($ads);
         }
 
 
