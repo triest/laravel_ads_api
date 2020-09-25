@@ -34,15 +34,21 @@
          */
         public function handle()
         {
+            if ($this->attempts() > 10) {
+                //
+            }
+
             //
             $image = Image::select(['*'])->where('id', $this->id)->first();
             if ($image == null || $image->url == null) {
-                return;
+                $delayInSeconds = 5 * 60;
+                $this->release($delayInSeconds);
             }
             try {
                 $contents = file_get_contents($image->url);
             } catch (IOException $exception) {
-                return;
+                $delayInSeconds = 5 * 60;
+                $this->release($delayInSeconds);
             }
             $name = uniqid() . ".png";
             $image->name = $name;
